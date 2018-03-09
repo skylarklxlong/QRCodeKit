@@ -1,8 +1,10 @@
-package online.himakeit.qrcodekit.ui.activity;
+package online.himakeit.qrcodekit.ui.common;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 
+import com.bigkoo.svprogresshud.SVProgressHUD;
 import com.umeng.analytics.MobclickAgent;
 
 /**
@@ -14,9 +16,47 @@ import com.umeng.analytics.MobclickAgent;
  */
 public class BaseActivity extends AppCompatActivity {
 
+    private SVProgressHUD svProgressHUD;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        initDialog();
+    }
+
+    private void initDialog() {
+        svProgressHUD = new SVProgressHUD(this);
+    }
+
+    public void showProgressDialog() {
+        dissmissProgressDialog();
+        svProgressHUD.showWithStatus("加载中...", SVProgressHUD.SVProgressHUDMaskType.Black);
+    }
+
+    public void showProgressDialog(String msg) {
+        if (TextUtils.isEmpty(msg)) {
+            showProgressDialog();
+        } else {
+            dissmissProgressDialog();
+            svProgressHUD.showWithStatus(msg, SVProgressHUD.SVProgressHUDMaskType.Black);
+        }
+    }
+
+    public void showProgressSuccess(String msg) {
+        dissmissProgressDialog();
+        svProgressHUD.showSuccessWithStatus(msg, SVProgressHUD.SVProgressHUDMaskType.Black);
+    }
+
+    public void showProgressError(String msg) {
+        dissmissProgressDialog();
+        svProgressHUD.showErrorWithStatus(msg, SVProgressHUD.SVProgressHUDMaskType.Black);
+    }
+
+    public void dissmissProgressDialog() {
+        if (svProgressHUD.isShowing()) {
+            svProgressHUD.dismiss();
+        }
     }
 
     @Override

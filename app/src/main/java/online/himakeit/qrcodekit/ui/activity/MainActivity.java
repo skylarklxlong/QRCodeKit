@@ -1,12 +1,13 @@
-package online.himakeit.qrcodekit;
+package online.himakeit.qrcodekit.ui.activity;
 
 import android.os.Bundle;
 
-import online.himakeit.qrcodekit.ui.activity.BaseActivity;
+import online.himakeit.qrcodekit.R;
+import online.himakeit.qrcodekit.ui.common.BaseActivity;
 
 /**
  * @author：LiXueLong
- * @date:2018/3/8-19:52
+ * @date:2018/3/9-17:17
  * @mail1：skylarklxlong@outlook.com
  * @mail2：li_xuelong@126.com
  * @des：MainActivity
