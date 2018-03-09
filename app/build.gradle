@@ -1,19 +1,105 @@
 apply plugin: 'com.android.application'
 
+def keyStore = file('skylarkkeystore.jks')
+
 android {
-    compileSdkVersion 26
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
     defaultConfig {
-        applicationId "online.himakeit.qrcodekit"
-        minSdkVersion 14
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        flavorDimensions "versionCode"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+
+    //签名的相关配置
+    signingConfigs {
         release {
+            storeFile file('skylarkkeystore.jks')
+            storePassword rootProject.ext.storePassword
+            keyAlias rootProject.ext.keyAlias
+            keyPassword rootProject.ext.keyPassword
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            debuggable true
+            //混淆
             minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            debuggable false
+            //开启混淆
+            minifyEnabled false
+            //删除无用的资源
+//            shrinkResources true
+            //混淆文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            if (keyStore.exists()) {
+                println "Skylark: using skylark's key"
+                //根据在signingConfigs.release里的签名配置进行签名
+                signingConfig signingConfigs.release
+            } else {
+                println "Skylark: using default key"
+            }
+
+            // 自定义输出配置
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+//                    outputFileName = "${variant.name}-${variant.versionName}.apk"
+                    outputFileName = "QRCodeKit_${variant.buildType.name}_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                }
+
+                /*variant.outputs.all { output ->
+                    def outputFile = outputFileName
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为xxx_release_v1.0_wandoujia.apk
+                        def fileName = "QRCodeKit_${variant.buildType.name}_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                        outputFileName  = new File(outputFile.parent + "/${variant.buildType.name}", fileName)
+                    }
+                }*/
+            }
+        }
+
+        productFlavors {
+            fir {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "fir"]
+            }
+            GooglePlay {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "GooglePlay"]
+            }
+            Umeng {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Umeng"]
+            }
+            wandoujia {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+            }
+            xiaomi {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+            }
+            meizu {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu"]
+            }
+            yingyongbao {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbao"]
+            }
+            "360" {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "360"]
+            }
+            skylark {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "skylark"]
+            }
+
         }
     }
 }
@@ -25,4 +111,63 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    /**
+     *    注解
+     */
+    compile 'com.jakewharton:butterknife:8.6.0'
+
+    /**
+     *    加载图片的
+     */
+    compile 'com.github.bumptech.glide:glide:3.8.0'
+
+    /**
+     *   material风格的dialogs
+     */
+    compile 'com.afollestad.material-dialogs:core:0.9.6.0'
+
+    /**
+     *   版本升级
+     */
+    compile 'com.github.maning0303:MNUpdateAPK:V1.0.5'
+
+    /**
+     *   权限库
+     */
+    compile 'com.yanzhenjie:permission:1.1.0'
+
+    /**
+     *   网络监测 chuck
+     */
+    debugCompile 'com.readystatesoftware.chuck:library:1.0.4'
+    releaseCompile 'com.readystatesoftware.chuck:library-no-op:1.0.4'
+
+    /**
+     *   提示库
+     */
+    compile 'com.bigkoo:svprogresshud:1.0.4'
+
+    /**
+     *    内存溢出检测
+     */
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+
+    /**
+     *    友盟统计
+     */
+    compile 'com.umeng.sdk:common:latest.integration'
+    compile 'com.umeng.sdk:analytics:latest.integration'
+
+    /**
+     *     webview顶端的进度条
+     */
+    compile 'com.daimajia.numberprogressbar:library:1.2@aar'
+
+    /**
+     * gson
+     */
+    compile 'com.google.code.gson:gson:2.8.2'
 }

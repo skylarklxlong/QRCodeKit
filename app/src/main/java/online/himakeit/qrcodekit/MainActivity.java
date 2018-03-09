@@ -1,7 +1,9 @@
 package online.himakeit.qrcodekit;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import online.himakeit.qrcodekit.ui.activity.BaseActivity;
+
 /**
  * @author：LiXueLong
  * @date:2018/3/8-19:52
@@ -9,7 +11,7 @@ import android.os.Bundle;
  * @mail2：li_xuelong@126.com
  * @des：MainActivity
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

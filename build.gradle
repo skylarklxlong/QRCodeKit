@@ -19,9 +19,24 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    compileSdkVersion = 26
+    buildToolsVersion = "26.0.2"
+    applicationId = "online.himakeit.qrcodekit"
+    minSdkVersion = 16
+    targetSdkVersion = 23
+    versionCode = 2
+    versionName = "1.0.201803091024"
+    storePassword = "skylark"
+    keyAlias = "skylark"
+    keyPassword = "skylark"
 }
