@@ -14,6 +14,8 @@ import com.maning.updatelibrary.InstallUtils;
 
 import java.text.DecimalFormat;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import online.himakeit.qrcodekit.R;
 import online.himakeit.qrcodekit.config.Config;
 import online.himakeit.qrcodekit.model.AppUpdateInfo;
@@ -37,11 +39,11 @@ import online.himakeit.qrcodekit.util.Toasts;
  */
 public class SplashActivity extends BaseActivityFullScreen implements ISplashView {
 
-    //    @BindView(R.id.splash_image)
+    @BindView(R.id.splash_image)
     ImageView mSplashImage;
-    //    @BindView(R.id.splash_version_name)
+    @BindView(R.id.splash_version_name)
     TextView mVersionName;
-    //    @BindView(R.id.splash_copyright)
+    @BindView(R.id.splash_copyright)
     TextView mCopyright;
 
     SplashPresenterImpl splashPresenter = null;
@@ -53,11 +55,7 @@ public class SplashActivity extends BaseActivityFullScreen implements ISplashVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-//        ButterKnife.bind(this);
-
-        mSplashImage = findViewById(R.id.splash_image);
-        mVersionName = findViewById(R.id.splash_version_name);
-        mCopyright = findViewById(R.id.splash_copyright);
+        ButterKnife.bind(this);
 
         splashPresenter = new SplashPresenterImpl(this, this);
         splashPresenter.initialized();

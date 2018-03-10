@@ -35,7 +35,7 @@ ext {
     minSdkVersion = 16
     targetSdkVersion = 23
     versionCode = 3
-    versionName = "1.0.201803100852"
+    versionName = "1.0.201803101200"
     storePassword = "skylark"
     keyAlias = "skylark"
     keyPassword = "skylark"

@@ -7,6 +7,8 @@
     <color name="black">@android:color/black</color>
     <color name="darker_gray">@android:color/darker_gray</color>
     <color name="white">@android:color/white</color>
-    <color name="transparent_white">#44ffffff</color>
+    <color name="black_text1_color">#000000</color>
+    <color name="black_text2_color">#454545</color>
+    <color name="black_text3_color">#7c7c7c</color>
     <color name="mid_grey">#40808080</color>
 </resources>

@@ -114,8 +114,10 @@ dependencies {
 
     /**
      * 注解
+     * 现在必须同时倒两个包否则不能用
      */
-    compile 'com.jakewharton:butterknife:8.6.0'
+    compile 'com.jakewharton:butterknife:8.7.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 
     /**
      * 加载图片的
