@@ -14,6 +14,8 @@ android {
         versionName rootProject.ext.versionName
         flavorDimensions "versionCode"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     //签名的相关配置
@@ -127,7 +129,8 @@ dependencies {
     /**
      * material风格的dialogs
      */
-    compile 'com.afollestad.material-dialogs:core:0.9.6.0'
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+    implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
 
     /**
      * 版本升级

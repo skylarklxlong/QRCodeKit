@@ -21,4 +21,9 @@ public class Config {
     public static final String DEFAULT_SCREENSHOT_PATH = DEFAULT_ROOT + "/screenshot";
 
     public static final String APP_NEED_UPDATE = "need_update";
+
+    public static final String APP_NAME_EN = "QRCodeKit";
+    public static final String QRCODE_NORMAL_TYPE = "normal";
+    public static final String QRCODE_LOGO_TYPE = "logo";
+    public static final String QRCODE_AWESOME_TYPE = "awsome";
 }

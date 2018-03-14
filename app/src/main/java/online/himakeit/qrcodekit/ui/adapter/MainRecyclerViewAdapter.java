@@ -57,18 +57,16 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
             String title = mDatas.get(position);
             viewHolder.mTvTitle.setText(title);
 
-            if ("普遍二维码".equals(title)) {
-                viewHolder.mIvImg.setImageResource(R.drawable.zero);
-            } else if ("LOGO二维码".equals(title)) {
-                viewHolder.mIvImg.setImageResource(R.drawable.zero);
-            } else if ("完美二维码".equals(title)) {
-                viewHolder.mIvImg.setImageResource(R.drawable.zero);
+            if ("普遍模式".equals(title)) {
+                viewHolder.mIvImg.setImageResource(R.mipmap.ic_launcher);
+            } else if ("高级模式".equals(title)) {
+                viewHolder.mIvImg.setImageResource(R.mipmap.ic_launcher);
             } else if ("二维码百科".equals(title)) {
-                viewHolder.mIvImg.setImageResource(R.drawable.zero);
+                viewHolder.mIvImg.setImageResource(R.mipmap.ic_launcher);
             } else if ("淘宝优惠券".equals(title)) {
-                viewHolder.mIvImg.setImageResource(R.drawable.zero);
+                viewHolder.mIvImg.setImageResource(R.mipmap.ic_launcher);
             } else if ("其他".equals(title)) {
-                viewHolder.mIvImg.setImageResource(R.drawable.zero);
+                viewHolder.mIvImg.setImageResource(R.mipmap.ic_launcher);
             }
         }
     }

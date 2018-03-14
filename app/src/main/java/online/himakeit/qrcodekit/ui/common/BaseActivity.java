@@ -54,7 +54,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void dissmissProgressDialog() {
-        if (svProgressHUD.isShowing()) {
+        if (svProgressHUD != null && svProgressHUD.isShowing()) {
             svProgressHUD.dismiss();
         }
     }
@@ -65,7 +65,7 @@ public class BaseActivity extends AppCompatActivity {
         /**
          * 统计页面(仅有Activity的应用中SDK自动调用，不需要单独写。)
          */
-        MobclickAgent.onPageStart(getClass().getName());
+        MobclickAgent.onPageStart(this.getClass().getName());
         /**
          * Session统计
          * 用来统计应用时长的
@@ -84,7 +84,7 @@ public class BaseActivity extends AppCompatActivity {
         /**
          * 保证 onPageEnd 在onPause 之前调用,因为 onPause 中会保存信息。
          */
-        MobclickAgent.onPageEnd(getClass().getName());
+        MobclickAgent.onPageEnd(this.getClass().getName());
         /**
          * Session统计
          * 用来统计应用时长的

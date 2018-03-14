@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">二维码工具箱</string>
+    <string name="splash_copyright">Copyright &#169; 2018 QRCodeKit All Rights Reserved\nPowered by XueLong</string>
+    <string name="awesome_qr_tip">要选择在二维码中使用的背景图像，请向应用程序授予存储权限。</string>
+    <string name="awesome_qr_contents">内容</string>
+    <string name="awesome_qr_content_hint">http://himakeit.online/</string>
+    <string name="awesome_qr_size_tips">大小（单位为：px，包括白边大小，宽高相等）</string>
+    <string name="awesome_qr_margin_px">白边大小 (px)</string>
+    <string name="awesome_qr_data_dot_scale"><![CDATA[数据圆点透明度 (0 < 透明度 < 1.0f)]]></string>
+    <string name="awesome_qr_rounded_data_dots">圆形数据点</string>
+    <string name="awesome_qr_automatically_pick_color">自动从背景图片中选取颜色</string>
+    <string name="awesome_qr_colordark_tips">背景色 (\"true\" dots, #dddddd)</string>
+    <string name="awesome_qr_colordark_hint">背景色</string>
+    <string name="awesome_qr_colorlight_tips">前景色 (\"false\" dots, #dddddd)</string>
+    <string name="awesome_qr_colorlight_hint">前景色</string>
+    <string name="awesome_qr_background_image_tips">背景图片</string>
+    <string name="select">选择</string>
+    <string name="awesome_qr_logo_image">Logo图片</string>
+    <string name="clear">清除</string>
+    <string name="awesome_qr_logo_margin_tips">logo白边大小 (单位为：px, 围绕logo一圈, 0表示禁用)</string>
+    <string name="awesome_qr_logo_corner_radius_tips">logo的圆角半径 (单位为：px, 0表示禁用)</string>
+    <string name="awesome_qr_logoscale_tips">logo比例 (logo大小=logo比例*logo的圆角半径)</string>
+    <string name="awesome_qr_white_margin">背景图片白边</string>
+    <string name="awesome_qr_binarize_all">全部二值化</string>
+    <string name="awesome_qr_binarize_threshold_tips"><![CDATA[二值化范围 (0 < 范围 < 255)]]></string>
+    <string name="generate">生成</string>
+    <string name="save">保存</string>
+    <string name="awesome_qr_hit_back">点击返回按钮重新编辑二维码</string>
+    <string name="done">确定</string>
+    <string name="cancel">取消</string>
+    <string name="back">返回</string>
+    <string name="select_color">请选择颜色</string>
+    <string name="detail">详细</string>
+    <string name="custom">定制</string>
+    <string name="presets">预设</string>
+</resources>

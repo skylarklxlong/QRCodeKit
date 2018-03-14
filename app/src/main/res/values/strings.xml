@@ -1,4 +1,36 @@
 <resources>
-    <string name="app_name">二维码工具箱</string>
+    <string name="app_name">QRCodeKit</string>
     <string name="splash_copyright">Copyright &#169; 2018 QRCodeKit All Rights Reserved\nPowered by XueLong</string>
+    <string name="awesome_qr_tip">To select the background image used in QRCode, Please grant storage permission to the application.</string>
+    <string name="awesome_qr_contents">Contents</string>
+    <string name="awesome_qr_content_hint">http://himakeit.online/</string>
+    <string name="awesome_qr_size_tips">Size (px, includes the margin, width equals to height)</string>
+    <string name="awesome_qr_margin_px">Margin (px)</string>
+    <string name="awesome_qr_data_dot_scale"><![CDATA[Data dot scale (0 < scale < 1.0f)]]></string>
+    <string name="awesome_qr_rounded_data_dots">Rounded data dots</string>
+    <string name="awesome_qr_automatically_pick_color">Automatically pick color from background image</string>
+    <string name="awesome_qr_colordark_tips">colorDark (\"true\" dots, #dddddd)</string>
+    <string name="awesome_qr_colordark_hint">colorDark</string>
+    <string name="awesome_qr_colorlight_tips">colorLight (\"false\" dots, #dddddd)</string>
+    <string name="awesome_qr_colorlight_hint">colorLight</string>
+    <string name="awesome_qr_background_image_tips">Background image</string>
+    <string name="select">Select</string>
+    <string name="awesome_qr_logo_image">Logo image</string>
+    <string name="clear">Clear</string>
+    <string name="awesome_qr_logo_margin_tips">logoMargin (px, margin around the logo, 0 to disable)</string>
+    <string name="awesome_qr_logo_corner_radius_tips">logoCornerRadius (px, rounded corners, 0 to disable)</string>
+    <string name="awesome_qr_logoscale_tips">logoScale (logoSize=logoScale*innerRenderSize)</string>
+    <string name="awesome_qr_white_margin">White margin on background image</string>
+    <string name="awesome_qr_binarize_all">Binarize all</string>
+    <string name="awesome_qr_binarize_threshold_tips"><![CDATA[binarizeThreshold (0 < threshold < 255)]]></string>
+    <string name="generate">Generate</string>
+    <string name="save">Save</string>
+    <string name="awesome_qr_hit_back">Hit back button to re-edit the QRcode.</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="back">Back</string>
+    <string name="select_color">Please choose color</string>
+    <string name="detail">Detail</string>
+    <string name="custom">Custom</string>
+    <string name="presets">Presets</string>
 </resources>

@@ -1,5 +1,6 @@
 package online.himakeit.qrcodekit.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -55,9 +56,8 @@ public class MainActivity extends BaseActivity {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         ArrayList<String> mItemDatas = new ArrayList<>();
-        mItemDatas.add("普遍二维码");
-        mItemDatas.add("LOGO二维码");
-        mItemDatas.add("完美二维码");
+        mItemDatas.add("普遍模式");
+        mItemDatas.add("高级模式");
         mItemDatas.add("二维码百科");
         mItemDatas.add("淘宝优惠券");
         mItemDatas.add("其他");
@@ -72,16 +72,16 @@ public class MainActivity extends BaseActivity {
                 Log.e(TAG, "onItemClick: " + position + title);
                 switch (position) {
                     case 0:
+                        startActivity(new Intent(MainActivity.this, NormalQRActivity.class));
                         break;
                     case 1:
+                        startActivity(new Intent(MainActivity.this, AwesomeQRActivity.class));
                         break;
                     case 2:
                         break;
                     case 3:
                         break;
                     case 4:
-                        break;
-                    case 5:
                         break;
                     default:
                         break;
@@ -108,6 +108,7 @@ public class MainActivity extends BaseActivity {
                 showAppInfoDialog();
                 return true;
             case R.id.menu_action_setting:
+                startActivity(WebActivity.newIntent(MainActivity.this, "http://himakeit.online/", "XueLong's Blog"));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
