@@ -43,7 +43,7 @@ public class BitmapUtil {
              */
             float ratio = (float) minLen / 200.0f;
             sampleSize = (int) ratio;
-            LogUtils.show("sampleSize：" + sampleSize);
+            LogUtils.e("sampleSize：" + sampleSize);
         }
         /**
          * 计算好压缩比例后，这次可以去加载原图了

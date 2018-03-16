@@ -257,7 +257,7 @@ public class NormalQRActivity extends BaseActivityStatusBar implements ColorChoo
 
     @Override
     public void onColorSelection(@NonNull ColorChooserDialog dialog, int selectedColor) {
-        LogUtils.show("--->" + selectedColor);
+        LogUtils.e("--->" + selectedColor);
         colorDark = selectedColor;
         mTvBackgroundColor.setBackgroundColor(selectedColor);
     }

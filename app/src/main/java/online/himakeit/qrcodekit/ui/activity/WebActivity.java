@@ -91,7 +91,7 @@ public class WebActivity extends BaseActivityStatusBar {
 
         mUrl = getIntent().getStringExtra(EXTRA_URL);
         mTitle = getIntent().getStringExtra(EXTRA_TITLE);
-        LogUtils.show(TAG, "Url : " + mUrl + "\n" + "Title : " + mTitle);
+        LogUtils.e(TAG, "Url : " + mUrl + "\n" + "Title : " + mTitle);
 
         initWebView(this);
     }
@@ -115,7 +115,7 @@ public class WebActivity extends BaseActivityStatusBar {
     private void initWebView(final Context context) {
         WebSettings webSettings = mWebView.getSettings();
 //        webSettings.setUserAgentString("");
-        LogUtils.show(TAG, webSettings.getUserAgentString());
+        LogUtils.e(TAG, webSettings.getUserAgentString());
         // 如果访问的页面中有JavaScript，则WebView必须设置支持JavaScript，否则显示空白页面
         webSettings.setJavaScriptEnabled(true);
         webSettings.setLoadWithOverviewMode(true);

@@ -106,7 +106,7 @@ public class FileUtils {
                 fos.close();
                 Toasts.showLong("Image saved to " + outputFile.getAbsolutePath());
             } else {
-                LogUtils.show(outputFile.getAbsolutePath() + "已经存在");
+                LogUtils.e(outputFile.getAbsolutePath() + "已经存在");
                 Toasts.showShort("文件已经存在");
             }
         } catch (Exception e) {
@@ -314,12 +314,12 @@ public class FileUtils {
                     }
                     fileInfoList.add(fileInfo);
                 } catch (Exception e) {
-                    LogUtils.show("FileUtils", "------>>>" + e.getMessage());
+                    LogUtils.e("FileUtils", "------>>>" + e.getMessage());
                 }
 
             }
         }
-        LogUtils.show(TAG, "getSize ===>>> " + fileInfoList.size());
+        LogUtils.e(TAG, "getSize ===>>> " + fileInfoList.size());
         return fileInfoList;
     }
 

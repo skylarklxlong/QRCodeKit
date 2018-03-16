@@ -189,7 +189,7 @@ public class AppContext extends Application {
             long t2 = System.nanoTime();
             okhttp3.MediaType mediaType = response.body().contentType();
             String content = response.body().string();
-            LogUtils.show(TAG, "-----LoggingInterceptor----- :\nrequest url:" + request.url() + "\ntime:" + (t2 - t1) / 1e6d + "\nbody:" + content + "\n");
+            LogUtils.e(TAG, "-----LoggingInterceptor----- :\nrequest url:" + request.url() + "\ntime:" + (t2 - t1) / 1e6d + "\nbody:" + content + "\n");
             return response.newBuilder()
                     .body(okhttp3.ResponseBody.create(mediaType, content))
                     .build();

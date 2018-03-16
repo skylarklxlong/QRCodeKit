@@ -62,7 +62,7 @@ public class ShareUtil {
             e.printStackTrace();
             Toasts.showShort("未发现应用市场,即将跳转到网页版");
             shareWeb(context, Config.FIR_IM_APP_URL);
-            LogUtils.show("未发现应用市场");
+            LogUtils.e("未发现应用市场");
         }
     }
 
