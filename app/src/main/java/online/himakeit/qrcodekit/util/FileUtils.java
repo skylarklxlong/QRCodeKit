@@ -89,6 +89,32 @@ public class FileUtils {
         }
     }
 
+    public static File getPayFile(String typeName) {
+        return new File(FileUtils.getPublicContainer(Environment.DIRECTORY_PICTURES), Config.APP_NAME_EN + "_" + typeName + ".png");
+    }
+
+    public static void savePayBitmap(String typeName, Bitmap bitmap) {
+        FileOutputStream fos = null;
+        try {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream.toByteArray();
+            File outputFile = new File(getPublicContainer(Environment.DIRECTORY_PICTURES), Config.APP_NAME_EN + "_" + typeName + ".png");
+            if (!outputFile.exists()) {
+                fos = new FileOutputStream(outputFile);
+                fos.write(byteArray);
+                fos.close();
+                Toasts.showLong("Image saved to " + outputFile.getAbsolutePath());
+            } else {
+                LogUtils.show(outputFile.getAbsolutePath() + "已经存在");
+                Toasts.showShort("文件已经存在");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toasts.showLong("Failed to save the image.");
+        }
+    }
+
     /**
      * @param directoryName DIRECTORY_MUSIC
      *                      DIRECTORY_PODCASTS
@@ -722,13 +748,13 @@ public class FileUtils {
                 try {
                     bitmap = BitmapFactory.decodeStream(new FileInputStream(new File(filePath)));
                 } catch (FileNotFoundException e) {
-                    bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.icon_jpg);
+                    bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_jpg);
                 }
                 bitmap = ScreenshotUtils.extractThumbnail(bitmap, 100, 100);
                 break;
             }
             case TYPE_MP3: {
-                bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.icon_mp3);
+                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_mp3);
                 bitmap = ScreenshotUtils.extractThumbnail(bitmap, 100, 100);
                 break;
             }
@@ -736,7 +762,7 @@ public class FileUtils {
                 try {
                     bitmap = ScreenshotUtils.createVideoThumbnail(filePath);
                 } catch (Exception e) {
-                    bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.icon_mp4);
+                    bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_mp4);
                 }
                 bitmap = ScreenshotUtils.extractThumbnail(bitmap, 100, 100);
                 break;
@@ -1229,7 +1255,7 @@ public class FileUtils {
                 screenshotFile.createNewFile();
             }
             fos = new FileOutputStream(screenshotFile);
-            screenshotBitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.skylark);
+            screenshotBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_mp4);
             screenshotBitmap = ScreenshotUtils.extractThumbnail(screenshotBitmap, 96, 96);
             screenshotBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
         }

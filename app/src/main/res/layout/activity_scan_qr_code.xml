@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="online.himakeit.qrcodekit.ui.activity.ScanQRCodeActivity">
+
+    <include
+        android:id="@+id/include_tool_bar"
+        layout="@layout/layout_tool_action_bar" />
+
+    <RelativeLayout
+        android:layout_below="@id/include_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+</RelativeLayout>

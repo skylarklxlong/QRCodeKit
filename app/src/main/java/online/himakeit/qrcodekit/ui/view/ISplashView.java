@@ -1,6 +1,5 @@
 package online.himakeit.qrcodekit.ui.view;
 
-import android.graphics.Bitmap;
 import android.view.animation.Animation;
 
 import online.himakeit.qrcodekit.model.AppUpdateInfo;
@@ -25,9 +24,9 @@ public interface ISplashView {
      *
      * @param versionName
      * @param copyright
-     * @param backgroundBitmap
+     * @param backgroundRes
      */
-    void initializeViews(String versionName, String copyright, Bitmap backgroundBitmap);
+    void initializeViews(String versionName, String copyright, int backgroundRes);
 
     /**
      * 前往主界面

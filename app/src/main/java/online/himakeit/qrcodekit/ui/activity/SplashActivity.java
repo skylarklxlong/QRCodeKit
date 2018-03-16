@@ -16,6 +16,7 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.maning.updatelibrary.InstallUtils;
 
+import java.lang.ref.WeakReference;
 import java.text.DecimalFormat;
 
 import butterknife.BindView;
@@ -27,6 +28,7 @@ import online.himakeit.qrcodekit.ui.common.BaseActivityFullScreen;
 import online.himakeit.qrcodekit.ui.presenter.SplashPresenterImpl;
 import online.himakeit.qrcodekit.ui.view.ISplashView;
 import online.himakeit.qrcodekit.util.ApkUtils;
+import online.himakeit.qrcodekit.util.BitmapUtil;
 import online.himakeit.qrcodekit.util.DialogUtil;
 import online.himakeit.qrcodekit.util.LogUtils;
 import online.himakeit.qrcodekit.util.NetUtils;
@@ -54,6 +56,7 @@ public class SplashActivity extends BaseActivityFullScreen implements ISplashVie
     private NotifyUtil notifyUtils;
     private MaterialDialog dialogUpdate;
     private boolean isCancel = false;
+    WeakReference<Bitmap> bitmapWeakReference;
 
     private static String[] NEED_PERMISSIONS = {
             Manifest.permission.ACCESS_NETWORK_STATE,
@@ -114,11 +117,15 @@ public class SplashActivity extends BaseActivityFullScreen implements ISplashVie
     }
 
     @Override
-    public void initializeViews(String versionName, String copyright, Bitmap backgroundBitmap) {
+    public void initializeViews(String versionName, String copyright, int backgroundResId) {
         mCopyright.setText(copyright);
         mVersionName.setText(versionName);
-//        mSplashImage.setImageResource(backgroundResId);
-        mSplashImage.setImageBitmap(backgroundBitmap);
+
+        Bitmap bitmap = BitmapUtil.compressBitmap(SplashActivity.this, backgroundResId);
+        bitmapWeakReference = new WeakReference<Bitmap>(bitmap);
+        if (bitmapWeakReference != null) {
+            mSplashImage.setImageBitmap(bitmapWeakReference.get());
+        }
     }
 
     @Override

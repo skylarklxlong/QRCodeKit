@@ -1,0 +1,1 @@
+(function (page){ var define = page.define; var require = page.require; define("wiki-mobile-lemma:widget/tools/openBoxEid/openBoxEid.js",function(i,o,e){e.exports={agc:"202",agt:"203",igc:"204",igt:"205"}});})(window._SF_ ? _SF_.page : window.page);

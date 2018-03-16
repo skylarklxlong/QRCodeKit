@@ -7,7 +7,7 @@ import android.os.Environment;
  * @date：2018/3/9
  * @mail1：skylarklxlong@outlook.com
  * @mail2：li_xuelong@126.com
- * @des:
+ * @des: 不同机型在设置图片时，加载与自己相同分辨率的drawable或者mipmap目录下的图片是最省内存的
  */
 public class Config {
     /**
@@ -26,4 +26,6 @@ public class Config {
     public static final String QRCODE_NORMAL_TYPE = "normal";
     public static final String QRCODE_LOGO_TYPE = "logo";
     public static final String QRCODE_AWESOME_TYPE = "awsome";
+    public static final String WEIBO_URL = "https://weibo.com/u/5069128618";
+    public static final String FIR_IM_APP_URL = "http://fir.im/qrcodekit";
 }

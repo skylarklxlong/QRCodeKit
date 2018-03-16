@@ -1,12 +1,9 @@
 package online.himakeit.qrcodekit.ui.presenter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import java.lang.ref.WeakReference;
 import java.util.Calendar;
 
 import online.himakeit.qrcodekit.R;
@@ -29,7 +26,6 @@ public class SplashPresenterImpl {
 
     Context context;
     ISplashView iSplashView;
-    WeakReference<Bitmap> bitmapWeakReference;
 
     public SplashPresenterImpl(Context context, ISplashView iSplashView) {
         if (iSplashView == null) {
@@ -40,8 +36,7 @@ public class SplashPresenterImpl {
     }
 
     public void initialized() {
-//        iSplashView.initializeViews(getVersionName(context), getCopyright(context), getBackgroundImageResID());
-        iSplashView.initializeViews(getVersionName(context), getCopyright(context), getBackgroundBitmap(context));
+        iSplashView.initializeViews(getVersionName(context), getCopyright(context), getBackgroundImageResID());
         Animation animation = getBackgroundImageAnimation(context);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -91,23 +86,6 @@ public class SplashPresenterImpl {
                 }
             }
         });
-    }
-
-    private Bitmap getBackgroundBitmap(Context context) {
-        Bitmap bitmap = null;
-
-        Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        if (hour >= 6 && hour <= 12) {
-            bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.morning);
-        } else if (hour > 12 && hour <= 18) {
-            bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.afternoon);
-        } else {
-            bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.night);
-        }
-        bitmapWeakReference = new WeakReference<Bitmap>(bitmap);
-
-        return bitmapWeakReference.get();
     }
 
     private int getBackgroundImageResID() {
