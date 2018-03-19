@@ -67,7 +67,8 @@ public class SplashActivity extends BaseActivityFullScreen implements ISplashVie
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.CAMERA
     };
 
     @Override
@@ -77,7 +78,9 @@ public class SplashActivity extends BaseActivityFullScreen implements ISplashVie
         ButterKnife.bind(this);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_GRANTED) {
+                == PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                        == PackageManager.PERMISSION_GRANTED) {
             splashPresenter = new SplashPresenterImpl(this, this);
             splashPresenter.initialized();
         } else {

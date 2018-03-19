@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#fb7299</color>
     <color name="colorAccent">#fb7299</color>
 
+    <color name="scan_corner_color">#0effc2</color>
     <color name="black">@android:color/black</color>
     <color name="darker_gray">@android:color/darker_gray</color>
     <color name="white">@android:color/white</color>

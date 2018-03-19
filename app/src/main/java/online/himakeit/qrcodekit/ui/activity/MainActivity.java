@@ -81,8 +81,8 @@ public class MainActivity extends BaseActivity {
                 Log.e(TAG, "onItemClick: " + position + title);
                 switch (position) {
                     case 0:
-//                        startActivity(new Intent(MainActivity.this, ScanQRCodeActivity.class));
-                        Toasts.showShort("正在开发中...");
+                        startActivity(new Intent(MainActivity.this, ScanQRCodeActivity.class));
+//                        Toasts.showShort("正在开发中...");
                         break;
                     case 1:
                         startActivity(new Intent(MainActivity.this, NormalQRActivity.class));
