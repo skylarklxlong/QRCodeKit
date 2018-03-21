@@ -9,18 +9,11 @@
 
 # 知识点：
     1.Retrofit和OKHttp的使用；
-    2.MVP模式的基本使用；
-    3.RecycleView控件的使用；
-    4.状态的的颜色的设置（Android 4.4 +）；
-    5.Android Material Design 风格控件的基本使用；
-    6.SQLite的基本使用；
-    7.WebView的使用,夜间模式；
-    8.Jsoup抓取网页数据；
-    9.Android 6.0权限适配
-    10.夜间模式的使用
-    11.三方开源库的使用
-    12.Android 7.0适配安装升级
-    13.自定义View的相关知识
+    2.状态的的颜色的设置（Android 4.4 +）；
+    3.Android Material Design 风格控件的基本使用；
+    4.WebView的使用；
+    5.Android 6.0权限适配
+    6.三方开源库的使用
 
 
 
@@ -32,6 +25,9 @@
 
 
 ![himakeit.online](https://raw.githubusercontent.com/skylarklxlong/QRCodeKit/master/art/qrcode2.png)
+
+
+![himakeit.online](https://raw.githubusercontent.com/skylarklxlong/QRCodeKit/master/art/qrcode3.png)
 
 
 ### 感谢
@@ -55,10 +51,11 @@
 
 ## 更新日志：
 
-### V1.0.0:
-    1.
-    2.
-    3.
+### V1.0.+:
+    1.基本的二维码生成功能
+    2.高级的二维码生成功能；
+    3.二维码扫描功能；
+    4.本地二维码识别功能；
     
     
 ### License
