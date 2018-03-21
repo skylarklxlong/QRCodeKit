@@ -29,7 +29,6 @@ import online.himakeit.qrcodekit.ui.common.BaseActivity;
 import online.himakeit.qrcodekit.util.DialogUtil;
 import online.himakeit.qrcodekit.util.FileUtils;
 import online.himakeit.qrcodekit.util.ShareUtil;
-import online.himakeit.qrcodekit.util.Toasts;
 
 /**
  * @author：LiXueLong
@@ -95,7 +94,8 @@ public class MainActivity extends BaseActivity {
                         startActivity(WebActivity.newIntent(MainActivity.this, "https://baike.baidu.com/item/%E4%BA%8C%E7%BB%B4%E7%A0%81", "二维码百科"));
                         break;
                     case 4:
-                        Toasts.showShort("正在开发中...");
+                        startActivity(new Intent(MainActivity.this, TaoBaoActivity.class));
+//                        Toasts.showShort("正在开发中...");
                         break;
                     default:
                         break;
