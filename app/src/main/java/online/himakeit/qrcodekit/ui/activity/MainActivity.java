@@ -81,7 +81,6 @@ public class MainActivity extends BaseActivity {
                 switch (position) {
                     case 0:
                         startActivity(new Intent(MainActivity.this, ScanQRCodeActivity.class));
-//                        Toasts.showShort("正在开发中...");
                         break;
                     case 1:
                         startActivity(new Intent(MainActivity.this, NormalQRActivity.class));
@@ -90,12 +89,10 @@ public class MainActivity extends BaseActivity {
                         startActivity(new Intent(MainActivity.this, AwesomeQRActivity.class));
                         break;
                     case 3:
-//                        startActivity(WebActivity.newIntent(MainActivity.this,"file:///android_asset/qrcode_baike.html","二维码百科"));
                         startActivity(WebActivity.newIntent(MainActivity.this, "https://baike.baidu.com/item/%E4%BA%8C%E7%BB%B4%E7%A0%81", "二维码百科"));
                         break;
                     case 4:
                         startActivity(new Intent(MainActivity.this, TaoBaoActivity.class));
-//                        Toasts.showShort("正在开发中...");
                         break;
                     default:
                         break;

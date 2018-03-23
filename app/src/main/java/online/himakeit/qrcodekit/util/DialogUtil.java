@@ -26,7 +26,7 @@ public class DialogUtil {
         MaterialDialog materialDialog = new MaterialDialog.Builder(context)
                 .title(title)
                 .content(content)
-                .contentGravity(GravityEnum.CENTER)
+                .contentGravity(GravityEnum.START)
                 .positiveText(positiveBtnText)
                 .negativeText(negativeBtnText)
                 .onPositive(new MaterialDialog.SingleButtonCallback() {

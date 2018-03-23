@@ -18,7 +18,9 @@ import cn.bingoogolapple.qrcode.zxing.QRCodeDecoder;
 import cn.bingoogolapple.qrcode.zxing.ZXingView;
 import online.himakeit.qrcodekit.R;
 import online.himakeit.qrcodekit.ui.common.BaseActivityStatusBar;
+import online.himakeit.qrcodekit.util.DialogUtil;
 import online.himakeit.qrcodekit.util.FileUtils;
+import online.himakeit.qrcodekit.util.TextStrUtils;
 import online.himakeit.qrcodekit.util.Toasts;
 
 /**
@@ -96,7 +98,7 @@ public class ScanQRCodeActivity extends BaseActivityStatusBar implements QRCodeV
                     if (TextUtils.isEmpty(s)) {
                         Toasts.showShort("未发现二维码");
                     } else {
-                        Toasts.showShort(s);
+                        showScanResult(s);
                     }
                 }
             }.execute();
@@ -105,12 +107,27 @@ public class ScanQRCodeActivity extends BaseActivityStatusBar implements QRCodeV
 
     @Override
     public void onScanQRCodeSuccess(String result) {
-        Toasts.showShort(result);
+        showScanResult(result);
     }
 
     @Override
     public void onScanQRCodeOpenCameraError() {
         Toasts.showShort("打开相机出错！请检查是否开启权限！");
+    }
+
+    private void showScanResult(final String result) {
+        DialogUtil.showMyDialog(ScanQRCodeActivity.this, "扫描结果", result,
+                "复制", "确定", new DialogUtil.OnDialogClickListener() {
+                    @Override
+                    public void onConfirm() {
+                        TextStrUtils.copyText(result);
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                });
     }
 
     @Override
