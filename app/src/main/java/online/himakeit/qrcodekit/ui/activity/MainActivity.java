@@ -69,6 +69,8 @@ public class MainActivity extends BaseActivity {
         mItemDatas.add("高级模式");
         mItemDatas.add("二维码百科");
         mItemDatas.add("淘宝优惠券");
+        mItemDatas.add("多边形图片");
+        mItemDatas.add("经典海报");
 
         final ArrayList<String> mTitleDatas = mItemDatas;
         MainRecyclerViewAdapter mRecyclerAdapter = new MainRecyclerViewAdapter(this, mItemDatas);
@@ -93,6 +95,12 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 4:
                         startActivity(new Intent(MainActivity.this, TaoBaoActivity.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(MainActivity.this, LowPolyActivity.class));
+                        break;
+                    case 6:
+                        startActivity(new Intent(MainActivity.this, OldPosterActivity.class));
                         break;
                     default:
                         break;

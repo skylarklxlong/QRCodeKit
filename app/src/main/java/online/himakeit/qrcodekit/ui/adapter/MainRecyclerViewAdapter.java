@@ -67,6 +67,10 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
                 viewHolder.mIvImg.setImageResource(R.drawable.icon_help_72);
             } else if ("淘宝优惠券".equals(title)) {
                 viewHolder.mIvImg.setImageResource(R.drawable.icon_cart_72);
+            } else if ("多边形图片".equals(title)) {
+                viewHolder.mIvImg.setImageResource(R.drawable.icon_poly_72);
+            } else if ("经典海报".equals(title)) {
+                viewHolder.mIvImg.setImageResource(R.drawable.icon_poster_72);
             }
         }
     }

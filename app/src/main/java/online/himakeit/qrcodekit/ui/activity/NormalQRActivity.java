@@ -109,7 +109,7 @@ public class NormalQRActivity extends BaseActivityStatusBar implements ColorChoo
         }
         mIntent.setType("image/*");
         startActivityForResult(mIntent, 0x001);
-}
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
