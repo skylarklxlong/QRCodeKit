@@ -139,6 +139,15 @@ public class FileUtils {
     }
 
     /**
+     * /storage/emulated/0/Android/data/你的应用包名/cache/（APP卸载后，数据会被删除）
+     * @param context
+     * @return
+     */
+    public static String getExternalCacheDir(Context context) {
+        return context.getExternalCacheDir().getPath();
+    }
+
+    /**
      * Get a file path from a Uri. This will get the the path for Storage Access
      * Framework Documents, as well as the _data field for the MediaStore and
      * other file-based ContentProviders.

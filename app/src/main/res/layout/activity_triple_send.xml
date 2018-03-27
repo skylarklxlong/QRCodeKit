@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="online.himakeit.qrcodekit.ui.activity.TripleSendActivity">
+
+    <include
+        android:id="@+id/include_tool_bar"
+        layout="@layout/layout_tool_action_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_triple_send_title"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="标题"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLength="6"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_triple_send_1"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_below="@id/et_triple_send_title"
+            android:layout_toLeftOf="@id/iv_triple_send_2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_add_pic_72" />
+
+        <ImageView
+            android:id="@+id/iv_triple_send_2"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_below="@id/et_triple_send_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_add_pic_72" />
+
+        <ImageView
+            android:id="@+id/iv_triple_send_3"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_below="@id/et_triple_send_title"
+            android:layout_toRightOf="@id/iv_triple_send_2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_add_pic_72" />
+
+        <EditText
+            android:id="@+id/et_triple_send_1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@id/iv_triple_send_1"
+            android:layout_alignRight="@id/iv_triple_send_1"
+            android:layout_below="@id/iv_triple_send_2"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="第一句话"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLength="6"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_triple_send_2"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@id/iv_triple_send_2"
+            android:layout_alignRight="@id/iv_triple_send_2"
+            android:layout_below="@id/iv_triple_send_2"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="第二句话"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLength="6"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_triple_send_3"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@id/iv_triple_send_3"
+            android:layout_alignRight="@id/iv_triple_send_3"
+            android:layout_below="@id/iv_triple_send_2"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="第三句话"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLength="6"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_triple_send_img"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:scaleType="centerCrop" />
+
+    <Button
+        android:id="@+id/btn_triple_send_generate"
+        style="@style/BtnStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/generate" />
+</LinearLayout>

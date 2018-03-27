@@ -24,7 +24,7 @@
 
     <style name="BtnStyle">
         <item name="android:textAllCaps">false</item>
-        <item name="android:background">#5a5</item>
+        <item name="android:background">@color/colorPrimary</item>
         <item name="android:textColor">#fff</item>
     </style>
 

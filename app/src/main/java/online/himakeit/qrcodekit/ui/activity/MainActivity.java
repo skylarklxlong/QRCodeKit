@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity {
         mItemDatas.add("二维码百科");
         mItemDatas.add("淘宝优惠券");
         mItemDatas.add("多边形图片");
-        mItemDatas.add("经典海报");
+        mItemDatas.add("表情三连");
 
         final ArrayList<String> mTitleDatas = mItemDatas;
         MainRecyclerViewAdapter mRecyclerAdapter = new MainRecyclerViewAdapter(this, mItemDatas);
@@ -100,7 +100,7 @@ public class MainActivity extends BaseActivity {
                         startActivity(new Intent(MainActivity.this, LowPolyActivity.class));
                         break;
                     case 6:
-                        startActivity(new Intent(MainActivity.this, OldPosterActivity.class));
+                        startActivity(new Intent(MainActivity.this, TripleSendActivity.class));
                         break;
                     default:
                         break;

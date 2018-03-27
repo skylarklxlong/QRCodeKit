@@ -89,7 +89,7 @@
             android:name=".ui.activity.LowPolyActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.OldPosterActivity"
+            android:name=".ui.activity.TripleSendActivity"
             android:screenOrientation="portrait" />
     </application>
 
