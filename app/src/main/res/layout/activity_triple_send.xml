@@ -27,7 +27,7 @@
             android:hint="标题"
             android:imeOptions="actionNext"
             android:inputType="text"
-            android:maxLength="6"
+            android:maxLength="10"
             android:maxLines="1"
             android:textColor="@color/black"
             android:textSize="14sp"
@@ -74,7 +74,7 @@
             android:hint="第一句话"
             android:imeOptions="actionNext"
             android:inputType="text"
-            android:maxLength="6"
+            android:maxLength="10"
             android:maxLines="1"
             android:textColor="@color/black"
             android:textSize="14sp"
@@ -92,7 +92,7 @@
             android:hint="第二句话"
             android:imeOptions="actionNext"
             android:inputType="text"
-            android:maxLength="6"
+            android:maxLength="10"
             android:maxLines="1"
             android:textColor="@color/black"
             android:textSize="14sp"
@@ -110,12 +110,19 @@
             android:hint="第三句话"
             android:imeOptions="actionDone"
             android:inputType="text"
-            android:maxLength="6"
+            android:maxLength="10"
             android:maxLines="1"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="长按图片保存" />
 
     <ImageView
         android:id="@+id/iv_triple_send_img"
@@ -123,7 +130,7 @@
         android:layout_height="0dp"
         android:layout_margin="5dp"
         android:layout_weight="1"
-        android:scaleType="centerCrop" />
+        android:scaleType="fitCenter" />
 
     <Button
         android:id="@+id/btn_triple_send_generate"

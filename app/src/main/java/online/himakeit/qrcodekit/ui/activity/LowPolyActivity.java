@@ -1,11 +1,14 @@
 package online.himakeit.qrcodekit.ui.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -58,6 +61,37 @@ public class LowPolyActivity extends BaseActivityStatusBar {
         ButterKnife.bind(this);
 
         initToolBar();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        acquireStoragePermissions();
+    }
+
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
+    private void acquireStoragePermissions() {
+        int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (imgBitmapWeakReference != null) {
+            imgBitmapWeakReference.get().recycle();
+        }
     }
 
     private void initToolBar() {
@@ -151,8 +185,8 @@ public class LowPolyActivity extends BaseActivityStatusBar {
 
                     @Override
                     protected void onPostExecute(Bitmap bitmap) {
+                        dissmissProgressDialog();
                         if (bitmap != null) {
-                            dissmissProgressDialog();
                             imgBitmapWeakReference = new WeakReference<Bitmap>(bitmap);
                             if (imgBitmapWeakReference != null) {
                                 mIvImg.setImageBitmap(imgBitmapWeakReference.get());

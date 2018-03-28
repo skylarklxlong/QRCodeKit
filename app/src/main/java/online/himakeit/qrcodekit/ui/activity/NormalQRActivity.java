@@ -1,7 +1,9 @@
 package online.himakeit.qrcodekit.ui.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -9,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -69,6 +72,40 @@ public class NormalQRActivity extends BaseActivityStatusBar implements ColorChoo
         ButterKnife.bind(this);
 
         initToolBar();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        acquireStoragePermissions();
+    }
+
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
+    private void acquireStoragePermissions() {
+        int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (qrBitmapWeakReference != null) {
+            qrBitmapWeakReference.get().recycle();
+        }
+        if (logoBitmapWeakReference != null) {
+            logoBitmapWeakReference.get().recycle();
+        }
     }
 
     private void initToolBar() {

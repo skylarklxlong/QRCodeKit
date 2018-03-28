@@ -27,6 +27,7 @@ public class Config {
     public static final String QRCODE_LOGO_TYPE = "logo";
     public static final String QRCODE_AWESOME_TYPE = "awsome";
     public static final String QRCODE_LOWPOLY_TYPE = "lowpoly";
+    public static final String QRCODE_TRIPLE_TYPE = "triple";
     public static final String WEIBO_URL = "https://weibo.com/u/5069128618";
     public static final String FIR_IM_APP_URL = "http://fir.im/qrcodekit";
 }

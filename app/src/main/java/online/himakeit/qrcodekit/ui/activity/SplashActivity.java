@@ -101,6 +101,14 @@ public class SplashActivity extends BaseActivityFullScreen implements ISplashVie
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (bitmapWeakReference != null) {
+            bitmapWeakReference.get().recycle();
+        }
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 0x001) {

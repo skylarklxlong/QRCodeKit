@@ -1,12 +1,15 @@
 package online.himakeit.qrcodekit.ui.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.ActivityCompat;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,13 +19,19 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
+import java.lang.ref.WeakReference;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 import online.himakeit.qrcodekit.R;
+import online.himakeit.qrcodekit.config.Config;
+import online.himakeit.qrcodekit.ui.common.BaseActivityStatusBar;
+import online.himakeit.qrcodekit.util.DialogUtil;
 import online.himakeit.qrcodekit.util.FileUtils;
 import online.himakeit.qrcodekit.util.Toasts;
+import online.himakeit.qrcodekit.util.TripleImgUtils;
 
 /**
  * @author：LiXueLong
@@ -31,7 +40,7 @@ import online.himakeit.qrcodekit.util.Toasts;
  * @mail2：li_xuelong@126.com
  * @des：OldPosterActivity
  */
-public class TripleSendActivity extends AppCompatActivity {
+public class TripleSendActivity extends BaseActivityStatusBar {
     @BindView(R.id.iv_back)
     ImageView mIvBack;
     @BindView(R.id.tv_title)
@@ -55,6 +64,8 @@ public class TripleSendActivity extends AppCompatActivity {
     @BindView(R.id.btn_triple_send_generate)
     Button mBtnGenerate;
 
+    WeakReference<Bitmap> imgBitmapWeakReference;
+
     private static final int REQUEST_CODE_SELECT_IMAGE_ONE = 1;
     private static final int REQUEST_CODE_SELECT_IMAGE_TWO = 1 << 1;
     private static final int REQUEST_CODE_SELECT_IMAGE_THREE = 1 << 2;
@@ -64,10 +75,8 @@ public class TripleSendActivity extends AppCompatActivity {
     private String mPath1;
     private String mPath2;
     private String mPath3;
-    private String mSavePath;
     private String mTempPath;
     private File mCutePhotoFile;
-    private File mCurrentImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +87,39 @@ public class TripleSendActivity extends AppCompatActivity {
 
         initToolBar();
 
-        mSavePath = FileUtils.getPublicContainer(Environment.DIRECTORY_PICTURES).getAbsolutePath();
         mTempPath = FileUtils.getExternalCacheDir(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        acquireStoragePermissions();
+    }
+
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
+    private void acquireStoragePermissions() {
+        int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (imgBitmapWeakReference != null){
+            imgBitmapWeakReference.get().recycle();
+        }
     }
 
     private void initToolBar() {
@@ -113,6 +153,33 @@ public class TripleSendActivity extends AppCompatActivity {
         }
     }
 
+    @OnLongClick(R.id.iv_triple_send_img)
+    public boolean onLongClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_triple_send_img:
+                if (imgBitmapWeakReference != null) {
+                    DialogUtil.showMyDialog(TripleSendActivity.this, "提示",
+                            "确认保存图片？", "确认", "取消",
+                            new DialogUtil.OnDialogClickListener() {
+                                @Override
+                                public void onConfirm() {
+                                    FileUtils.saveBitmap(Config.QRCODE_TRIPLE_TYPE,
+                                            imgBitmapWeakReference.get());
+                                }
+
+                                @Override
+                                public void onCancel() {
+
+                                }
+                            });
+                }
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -126,16 +193,27 @@ public class TripleSendActivity extends AppCompatActivity {
             } else if (actionCode == REQUEST_CODE_CUTE_IMAGE) {
                 if (mCutePhotoFile != null && mCutePhotoFile.exists()) {
                     if (REQUEST_CODE_SELECT_IMAGE_ONE == pictureCode) {
+                        mPath1 = mCutePhotoFile.getAbsolutePath();
                         Glide.with(TripleSendActivity.this)
-                                .load(mCutePhotoFile.getAbsolutePath())
+                                .load(mPath1)
                                 .into(mIvImg1);
-                    } else if (REQUEST_CODE_SELECT_IMAGE_TWO == pictureCode) {
+                        mPath2 = mPath1;
                         Glide.with(TripleSendActivity.this)
-                                .load(mCutePhotoFile.getAbsolutePath())
+                                .load(mPath2)
+                                .into(mIvImg2);
+                        mPath3 = mPath1;
+                        Glide.with(TripleSendActivity.this)
+                                .load(mPath3)
+                                .into(mIvImg3);
+                    } else if (REQUEST_CODE_SELECT_IMAGE_TWO == pictureCode) {
+                        mPath2 = mCutePhotoFile.getAbsolutePath();
+                        Glide.with(TripleSendActivity.this)
+                                .load(mPath2)
                                 .into(mIvImg2);
                     } else if (REQUEST_CODE_SELECT_IMAGE_THREE == pictureCode) {
+                        mPath3 = mCutePhotoFile.getAbsolutePath();
                         Glide.with(TripleSendActivity.this)
-                                .load(mCutePhotoFile.getAbsolutePath())
+                                .load(mPath3)
                                 .into(mIvImg3);
                     }
                 }
@@ -144,7 +222,47 @@ public class TripleSendActivity extends AppCompatActivity {
     }
 
     private void generateImg() {
-        Toasts.showShort("功能正在开发中。。。");
+        final String strTitle = mEtTitle.getText().toString();
+        final String strName1 = mEtMsg1.getText().toString();
+        final String strName2 = mEtMsg1.getText().toString();
+        final String strName3 = mEtMsg1.getText().toString();
+        if (TextUtils.isEmpty(strTitle)) {
+            Toasts.showShort("请先输入标题");
+        } else if (TextUtils.isEmpty(strName1)) {
+            Toasts.showShort("请输入图片1文字内容");
+        } else if (TextUtils.isEmpty(strName2)) {
+            Toasts.showShort("请输入图片2文字内容");
+        } else if (TextUtils.isEmpty(strName3)) {
+            Toasts.showShort("请输入图片3文字内容");
+        } else if (TextUtils.isEmpty(mPath1)) {
+            Toasts.showShort("请先选择图片1");
+        } else if (TextUtils.isEmpty(mPath2)) {
+            Toasts.showShort("请先选择图片2");
+        } else if (TextUtils.isEmpty(mPath3)) {
+            Toasts.showShort("请先选择图片3");
+        } else {
+            showProgressDialog("图片处理中...");
+            new AsyncTask<Void, Void, Bitmap>() {
+                @Override
+                protected Bitmap doInBackground(Void... voids) {
+                    return TripleImgUtils.createExpression(strTitle, mPath1, mPath2, mPath3, strName1, strName2, strName3);
+                }
+
+                @Override
+                protected void onPostExecute(Bitmap bitmap) {
+                    if (bitmap != null) {
+                        imgBitmapWeakReference = new WeakReference<Bitmap>(bitmap);
+                        if (imgBitmapWeakReference != null) {
+                            mIvImg.setImageBitmap(imgBitmapWeakReference.get());
+                        }
+                    } else {
+                        Toasts.showShort("生成失败");
+                    }
+
+                    dissmissProgressDialog();
+                }
+            }.execute();
+        }
     }
 
     private void selectImage(int requestCode) {

@@ -116,6 +116,14 @@ public class AwesomeQRActivity extends BaseActivityStatusBar {
         initCheckBox();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (qrBitmapWeakReference != null) {
+            qrBitmapWeakReference.get().recycle();
+        }
+    }
+
     private void initToolBar() {
         mIvBack.setOnClickListener(new View.OnClickListener() {
             @Override
