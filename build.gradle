@@ -34,8 +34,8 @@ ext {
     applicationId = "online.himakeit.qrcodekit"
     minSdkVersion = 16
     targetSdkVersion = 23
-    versionCode = 6
-    versionName = "1.0.201803281550"
+    versionCode = 7
+    versionName = "1.0.201803281620"
     storePassword = "skylark"
     keyAlias = "skylark"
     keyPassword = "skylark"

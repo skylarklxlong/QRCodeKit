@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.sumimakito.awesomeqr.AwesomeQRCode;
 
@@ -191,11 +190,11 @@ public class AwesomeQRActivity extends BaseActivityStatusBar {
                 break;
             case R.id.removeBackgroundImage:
                 backgroundImage = null;
-                Toast.makeText(AwesomeQRActivity.this, "Background image removed.", Toast.LENGTH_SHORT).show();
+                Toasts.showShort("Background image removed.");
                 break;
             case R.id.removeLogoImage:
                 logoImage = null;
-                Toast.makeText(AwesomeQRActivity.this, "Logo image removed.", Toast.LENGTH_SHORT).show();
+                Toasts.showShort("Logo image removed.");
                 break;
             case R.id.generate:
                 generateQrImg();
@@ -264,7 +263,7 @@ public class AwesomeQRActivity extends BaseActivityStatusBar {
                     }
             );
         } catch (Exception e) {
-            Toast.makeText(AwesomeQRActivity.this, "Error occurred, please check your configs.", Toast.LENGTH_LONG).show();
+            Toasts.showShort("Error occurred, please check your configs.");
         }
     }
 
