@@ -185,7 +185,7 @@ public class AwesomeQRActivity extends BaseActivityStatusBar {
                 break;
             case R.id.open:
                 if (qrBitmapWeakReference != null) {
-                    FileUtils.saveBitmap(Config.QRCODE_AWESOME_TYPE, qrBitmapWeakReference.get());
+                    FileUtils.saveBitmap(AwesomeQRActivity.this,Config.QRCODE_AWESOME_TYPE, qrBitmapWeakReference.get());
                 }
                 break;
             case R.id.removeBackgroundImage:

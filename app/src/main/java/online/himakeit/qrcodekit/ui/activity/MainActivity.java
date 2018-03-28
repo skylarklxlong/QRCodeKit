@@ -161,12 +161,12 @@ public class MainActivity extends BaseActivity {
                     DialogUtil.showPayDialog(MainActivity.this, 0, new DialogUtil.OnDialogClickListener() {
                         @Override
                         public void onConfirm() {
-                            FileUtils.savePayBitmap("alipay", BitmapFactory.decodeResource(MainActivity.this.getResources(), R.mipmap.alipay));
+                            FileUtils.savePayBitmap(MainActivity.this,"alipay", BitmapFactory.decodeResource(MainActivity.this.getResources(), R.mipmap.alipay));
                         }
 
                         @Override
                         public void onCancel() {
-                            FileUtils.savePayBitmap("alipay", BitmapFactory.decodeResource(MainActivity.this.getResources(), R.mipmap.alipay));
+                            FileUtils.savePayBitmap(MainActivity.this,"alipay", BitmapFactory.decodeResource(MainActivity.this.getResources(), R.mipmap.alipay));
                             ShareUtil.shareImage(MainActivity.this, Uri.fromFile(FileUtils.getPayFile("alipay")), "支付宝扫一扫打赏");
                         }
                     });
@@ -178,12 +178,12 @@ public class MainActivity extends BaseActivity {
                     DialogUtil.showPayDialog(MainActivity.this, 1, new DialogUtil.OnDialogClickListener() {
                         @Override
                         public void onConfirm() {
-                            FileUtils.savePayBitmap("wxpay", BitmapFactory.decodeResource(MainActivity.this.getResources(), R.mipmap.wxpay));
+                            FileUtils.savePayBitmap(MainActivity.this,"wxpay", BitmapFactory.decodeResource(MainActivity.this.getResources(), R.mipmap.wxpay));
                         }
 
                         @Override
                         public void onCancel() {
-                            FileUtils.savePayBitmap("wxpay", BitmapFactory.decodeResource(MainActivity.this.getResources(), R.mipmap.wxpay));
+                            FileUtils.savePayBitmap(MainActivity.this,"wxpay", BitmapFactory.decodeResource(MainActivity.this.getResources(), R.mipmap.wxpay));
                             ShareUtil.shareImage(MainActivity.this, Uri.fromFile(FileUtils.getPayFile("wxpay")), "微信扫一扫打赏");
 
                         }

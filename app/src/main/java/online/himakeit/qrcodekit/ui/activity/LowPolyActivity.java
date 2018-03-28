@@ -127,7 +127,7 @@ public class LowPolyActivity extends BaseActivityStatusBar {
                             new DialogUtil.OnDialogClickListener() {
                                 @Override
                                 public void onConfirm() {
-                                    FileUtils.saveBitmap(Config.QRCODE_LOWPOLY_TYPE,
+                                    FileUtils.saveBitmap(LowPolyActivity.this,Config.QRCODE_LOWPOLY_TYPE,
                                             imgBitmapWeakReference.get());
                                 }
 

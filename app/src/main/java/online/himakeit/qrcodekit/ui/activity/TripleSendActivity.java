@@ -117,7 +117,7 @@ public class TripleSendActivity extends BaseActivityStatusBar {
     protected void onDestroy() {
         super.onDestroy();
 
-        if (imgBitmapWeakReference != null){
+        if (imgBitmapWeakReference != null) {
             imgBitmapWeakReference.get().recycle();
         }
     }
@@ -163,7 +163,7 @@ public class TripleSendActivity extends BaseActivityStatusBar {
                             new DialogUtil.OnDialogClickListener() {
                                 @Override
                                 public void onConfirm() {
-                                    FileUtils.saveBitmap(Config.QRCODE_TRIPLE_TYPE,
+                                    FileUtils.saveBitmap(TripleSendActivity.this, Config.QRCODE_TRIPLE_TYPE,
                                             imgBitmapWeakReference.get());
                                 }
 

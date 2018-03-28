@@ -178,7 +178,7 @@ public class NormalQRActivity extends BaseActivityStatusBar implements ColorChoo
                             new DialogUtil.OnDialogClickListener() {
                                 @Override
                                 public void onConfirm() {
-                                    FileUtils.saveBitmap(Config.QRCODE_NORMAL_TYPE,
+                                    FileUtils.saveBitmap(NormalQRActivity.this,Config.QRCODE_NORMAL_TYPE,
                                             qrBitmapWeakReference.get());
                                 }
 

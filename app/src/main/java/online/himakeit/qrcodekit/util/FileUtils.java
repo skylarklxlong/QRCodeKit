@@ -72,7 +72,23 @@ public class FileUtils {
     public static final DecimalFormat FORMAT_ONE = new DecimalFormat("####.#");
 
 
-    public static void saveBitmap(String typeName, Bitmap bitmap) {
+    public static void refreshAlbum(Context context, File file) {
+
+        try {
+            /**
+             * 把文件插入到系统图库
+             */
+            MediaStore.Images.Media.insertImage(context.getContentResolver(), file.getAbsolutePath(), file.getName(), null);
+            /**
+             * 通知图库更新
+             */
+            context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveBitmap(Context context, String typeName, Bitmap bitmap) {
         FileOutputStream fos = null;
         try {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -82,6 +98,7 @@ public class FileUtils {
             fos = new FileOutputStream(outputFile);
             fos.write(byteArray);
             fos.close();
+            refreshAlbum(context, outputFile);
             Toasts.showLong("Image saved to " + outputFile.getAbsolutePath());
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,7 +110,7 @@ public class FileUtils {
         return new File(FileUtils.getPublicContainer(Environment.DIRECTORY_PICTURES), Config.APP_NAME_EN + "_" + typeName + ".png");
     }
 
-    public static void savePayBitmap(String typeName, Bitmap bitmap) {
+    public static void savePayBitmap(Context context, String typeName, Bitmap bitmap) {
         FileOutputStream fos = null;
         try {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -104,6 +121,7 @@ public class FileUtils {
                 fos = new FileOutputStream(outputFile);
                 fos.write(byteArray);
                 fos.close();
+                refreshAlbum(context, outputFile);
                 Toasts.showLong("Image saved to " + outputFile.getAbsolutePath());
             } else {
                 LogUtils.e(outputFile.getAbsolutePath() + "已经存在");
@@ -140,6 +158,7 @@ public class FileUtils {
 
     /**
      * /storage/emulated/0/Android/data/你的应用包名/cache/（APP卸载后，数据会被删除）
+     *
      * @param context
      * @return
      */
