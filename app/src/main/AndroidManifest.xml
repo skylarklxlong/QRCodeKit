@@ -91,6 +91,9 @@
         <activity
             android:name=".ui.activity.TripleSendActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.common.TestActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
