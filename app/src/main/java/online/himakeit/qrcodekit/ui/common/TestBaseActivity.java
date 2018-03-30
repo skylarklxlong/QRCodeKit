@@ -24,6 +24,8 @@ import online.himakeit.qrcodekit.R;
  * @mail1：skylarklxlong@outlook.com
  * @mail2：li_xuelong@126.com
  * @des:
+ *
+ * https://www.jianshu.com/p/e9df8c501f92
  */
 public abstract class TestBaseActivity extends AppCompatActivity {
 
